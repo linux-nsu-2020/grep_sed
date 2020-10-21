@@ -8,7 +8,7 @@
 Команда:
 
 ```
-$sed -rEi 's/o/0/g' google-10000-english.txt
+$sed -rE -i.backup 's/o/0/g' google-10000-english.txt
 ```
 
 ### 2.

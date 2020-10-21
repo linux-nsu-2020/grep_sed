@@ -3,7 +3,7 @@
 Команда:
 
 ```
-$grep -c -P "\ba\S*?a\b" <./google-10000-english.txt
+$grep -Eo "\ba\S*?a\b" google-10000-english.txt | wc -w
 ```
 
 Результат:41
@@ -13,17 +13,17 @@ $grep -c -P "\ba\S*?a\b" <./google-10000-english.txt
 Команда:
 
 ```
-$grep -c -P -v "\ba\S*?a\b" <./google-10000-english.txt
+$sed -Er "s/\ba\S*?a\b//g" google-10000-english.txt | wc -w
 ```
 
-Результат:1209
+Результат:9959
 
 ### 3. Сколько слов одновременно начинаются на 'a' и кончаются на 'a' и содержат букву 's'?
 
 Команда:
 
 ```
-$grep -P -c "\ba\S*?s\S*?a\b" <./google-10000-english.txt
+$grep -Eo "\ba\S*?s\S*?a\b" google-10000-english.txt | wc -w
 ```
 
 Результат:5
@@ -33,7 +33,7 @@ $grep -P -c "\ba\S*?s\S*?a\b" <./google-10000-english.txt
 Команда:
 
 ```
-$grep -P -c "\ba[ante]*?a\b" <./google-10000-english.txt
+$grep -Eo "\ba[ante]*?a\b" google-10000-english.txt | wc -w
 ```
 
 Результат:6
@@ -43,37 +43,37 @@ $grep -P -c "\ba[ante]*?a\b" <./google-10000-english.txt
 Команда:
 
 ```
-$grep -P -c "\ba[^nte\s]*?a\b" <./google-10000-english.txt
+$grep -Eo "\ba[^nte\s]*?a\b" google-10000-english.txt |wc -w
 ```
 
-Результат:14
+Результат:12
 
 ### 6. Сколько слов содержат букву 'a' только в конце слова?
 
 Команда:
 
 ```
-$grep -Pc "\b[^a\s]*?a\b" <./google-10000-english.txt
+$grep -Eo "\b[^a\s]*?a\b" google-10000-english.txt | wc -w
 ```
 
-Результат:150
+Результат:148
 
 ### 7. Сколько слов, длиннее трех букв, содержат только буквы из следующего списка: 'a', 'b', 'c', 'd', 'e'.
 
 Команда:
 
 ```
-$grep -Pc "\b[abcde]+?\b" <./google-10000-english.txt
+$grep -Eo "\b[abcde]+?\b" google-10000-english.txt | wc -w
 ```
 
-Результат:48
+Результат:49
 
 ### 8. Во скольких словах встречаются участки длинее 4-х символов, состоящие только из букв 'a', 'b', 'c'?
 
 Команда:
 
 ```
-$grep -Pc "[abc]{4,}" <./google-10000-english.txt
+$grep -Eo "[abc]{4,}" <./google-10000-english.txt | wc -w
 ```
 
 Результат:1
@@ -84,7 +84,7 @@ $grep -Pc "[abc]{4,}" <./google-10000-english.txt
 
 
 ```
-$find /usr/share/doc -type f -exec grep -Pl "\bGPL\b" {} \; | wc -l
+$find /usr/share/doc -type f -exec grep -El "\bGPL\b" {} \; | wc -l
 ```
 
 Результат: 1164
