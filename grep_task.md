@@ -3,7 +3,7 @@
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '\<a[^ ]*a\>' | wc -w
 ```
 
 Результат:
@@ -13,7 +13,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '\<[^a][^ ]*[^a]\> \| \<a[^ ]*[^a]\> \| \<[^a][^ ]*a\>' | wc -w
 ```
 
 Результат:
@@ -23,7 +23,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '\<a[^ ]*s[^ ]*a\>' | wc -w
 ```
 
 Результат:
@@ -33,7 +33,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '\<a[ante]*a\>' | wc -w
 ```
 
 Результат:
@@ -43,7 +43,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '\<a[^nte]*a\>' | wc -w
 ```
 
 Результат:
@@ -53,7 +53,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '[^a]*a\>' | wc -w
 ```
 
 Результат:
@@ -63,7 +63,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '[abcde]\{3,\}' | wc -w
 ```
 
 Результат:
@@ -73,7 +73,7 @@ $
 Команда:
 
 ```
-$
+$ cat google-10000-english.txt | grep -o '[^ ]*[abc]\{4,\}[^ ]*' | wc -w
 ```
 
 Результат:
@@ -84,7 +84,7 @@ $
 
 
 ```
-$
+$ grep -rml ‘GPL’ /usr/share/doc | wc -l
 ```
 
 Результат:
